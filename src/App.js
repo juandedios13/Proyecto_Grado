@@ -6,6 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import  {Prueba}  from "./component/PanelControl/prueba";
+import { Index } from "./component/PanelControl";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       
       <Routes>
         <Route path="/prueba" element={<Prueba />}></Route>
+        <Route path="/Panel" element={<Index />}></Route>
         <Route path="/" element={<Login />}>
           
         </Route>
