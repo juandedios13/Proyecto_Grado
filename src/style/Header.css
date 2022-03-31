@@ -1,0 +1,19 @@
+@media (max-width:1000px){
+    .navbar-expand-config{
+        position: absolute;
+        left: 250px;
+
+    }
+    body.sidebar-open .navbar-expand-config{
+        position: absolute;
+        left: 250px;
+
+    }
+    body.sidebar-closed .navbar-expand-config{
+        position: absolute;
+        left: 10px;
+
+    }
+}
+
+

@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { UserContext } from '../../contexts/UserContext';
 
 const FormsLogin = () => {
+
+    let navigate = useNavigate();
+
+    const {setUser} = useContext(UserContext);
 
     const handleSubmit = (e)=>e.preventDefault();
 
     const [datos, setdatos] = useState({
-        user:"",
+        correo:"",
         password:""
     });
     
@@ -32,17 +38,28 @@ const FormsLogin = () => {
                 'Content-Type': 'application/json'
               }
         } 
-        fetch("http://localhost:3001/",datosApi).then((e)=>{
+        console.log("asdqwe")
+        fetch("http://localhost:3001/login",datosApi).then((e)=>{
                 return e.json(); 
         }).then((e)=>{
-            console.log(e);
+            localStorage.setItem('token',JSON.stringify(e));
+            if(e.tipo == "docente" || e.tipo == "Docente" ||  e.tipo == "Admin" ||  e.tipo == "admin"){
+                enviar('Panel')
+            }else if(e.tipo){
+                enviar('Estudiantes')
+            }
         });
+    }
+
+
+    const enviar = (url)=>{
+        navigate(`/${url}`);
     }
 
     return (
         <div>
            <form className="login" onSubmit={handleSubmit}>
-                <input type="text" placeholder="username" name="user" onChange={handleDatos} />
+                <input type="text" placeholder="username" name="correo" onChange={handleDatos} />
 				<input type="password" placeholder="password" name="password" onChange={handleDatos} />
 				<input type="submit"  value="Login" onClick={handleEnvio} />
            </form> 

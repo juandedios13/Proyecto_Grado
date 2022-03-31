@@ -1,27 +1,22 @@
-import Login from "./component/Login/Login";
-import React from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
-import  {Prueba}  from "./component/PanelControl/prueba";
-import { Index } from "./component/PanelControl";
+
+import React, { useEffect, useState } from "react";
+import {UserContext} from './contexts/UserContext'
+import AppRouter from "./routes/AppRouter";
+
+
 
 function App() {
+
+  const [user ,setUser] =  useState(null);
+
+
   return (
 
-    <BrowserRouter>
-      
-      <Routes>
-        <Route path="/prueba" element={<Prueba />}></Route>
-        <Route path="/Panel" element={<Index />}></Route>
-        <Route path="/" element={<Login />}>
-          
-        </Route>
-        
-      </Routes>
-    </BrowserRouter>
+    <UserContext.Provider value={{user,setUser}}>
+
+      <AppRouter></AppRouter>
+
+    </UserContext.Provider>
 
    
   );
