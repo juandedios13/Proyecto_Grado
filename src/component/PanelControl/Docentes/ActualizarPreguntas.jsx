@@ -147,6 +147,7 @@ const ActualizarPreguntas = (props) => {
             }
                                 
         }
+        console.log(pregunta)
         console.log(respuesta);
         if(tipo == 1 && n>1){
             setEstado(!estado);
@@ -170,10 +171,11 @@ const ActualizarPreguntas = (props) => {
         //})
         //console.log(respuestas);
 
-        if(false){
+        if(estado){
 
-            let url = "http://localhost:3001/Update";
+            let url = "http://localhost:3001/Update/Examen";
             let datos = {
+                tipo:tipo,
                 pregunta: pregunta,
                 respuestas: respuestas
             }
@@ -193,9 +195,7 @@ const ActualizarPreguntas = (props) => {
                         alert('Error');
                     }
             }).then((e)=>{
-                        if(e.registro == 'true' || e.registro ){
-                            alert('Registro exitoso');
-                        }
+                        
             });
 
         }

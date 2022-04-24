@@ -16,7 +16,7 @@ const InputActualizarPreguntas = (props) => {
                   props.tipo !=  'Pregunta' ? 
                     <div className="form-check form-switch">
                       <input className="form-check-input"  posicion={props.posicion} type="checkbox" id={props.id} name={props.namecheck} defaultChecked={props.verdadera == 1?true:false} onChange={props.onChange}  />
-                      <label className="form-check-label" htmlFor={props.namecheck}>{props.verdadera == 1?'Desactivar':'Activar'}</label>
+                      <label className="form-check-label" htmlFor={props.namecheck}>{props.verdadera == 1?'Verdadera':'Falsa'}</label>
                     </div> 
                   : <></> 
               }
